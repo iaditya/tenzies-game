@@ -9,6 +9,18 @@ body {
   padding: 20px;
 }
 
+.title {
+  font-size: 40px;
+  margin: 0;
+}
+
+.instruction {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-top: 0;
+  text-align: center;
+}
+
 main {
   margin: 0 auto;
   max-width: 400px;
@@ -27,6 +39,7 @@ main {
   grid-template: auto auto / repeat(5, 1fr);
   gap: 15px;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 
 .dice {
