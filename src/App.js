@@ -12,11 +12,18 @@ function App() {
     return newDice;
   }
 
-  const dices = dice.map((d, i) => <Dice key={i} val={d} />);
+  function rollDice() {
+    setDice(() => allNewDice());
+  }
+
+  const diceElements = dice.map((d, i) => <Dice key={i} val={d} />);
 
   return (
     <main>
-      <div className="dice-container">{dices}</div>
+      <div className="dice-container">{diceElements}</div>
+      <button className="btn" onClick={rollDice}>
+        Roll
+      </button>
     </main>
   );
 }
