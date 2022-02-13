@@ -24,7 +24,7 @@ body {
 main {
   margin: 0 auto;
   max-width: 400px;
-  height: 400px;
+  height: 450px;
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 20px;
@@ -32,6 +32,27 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+.score-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.score,
+.time-passed {
+  color: #5035ff;
+  font-size: 14px;
+}
+
+.time-passed > span {
+  color: #0b2434;
+  font-size: 16px;
+  width: 30px;
+  display: inline-block;
 }
 
 .dice-container {
@@ -60,7 +81,7 @@ main {
   background: #5035ff;
   border: none;
   border-radius: 3.81277px;
-  padding: 15px 30px;
+  padding: 15px;
   color: white;
   width: 150px;
   font-size: 20px;
