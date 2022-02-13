@@ -8,7 +8,10 @@ function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [gameStarted, setGameStarted] = React.useState(false);
-  const [score, setScore] = React.useState({ best: 5, current: 0 });
+  const [score, setScore] = React.useState({
+    best: JSON.parse(localStorage.getItem("HIGH_SCORE")) || 100,
+    current: 0,
+  });
 
   React.useEffect(() => {
     if (!gameStarted && dice.some((d) => d.isHeld)) setGameStarted(true);

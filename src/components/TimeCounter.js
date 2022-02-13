@@ -26,6 +26,7 @@ export default function TimeCounter({ gameStarted, score, setScore }) {
     console.log("timerId ", timerId);
     setScore((prevScore) => {
       let best = sec < prevScore.best ? sec : prevScore.best;
+      localStorage.setItem("HIGH_SCORE", JSON.stringify(best));
       return { ...prevScore, current: sec, best: best };
     });
     setTime(0);
