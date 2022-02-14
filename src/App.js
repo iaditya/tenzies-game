@@ -11,6 +11,7 @@ function App() {
   const [score, setScore] = React.useState({
     best: JSON.parse(localStorage.getItem("HIGH_SCORE")) || 100,
     current: 0,
+    rolls: 0,
   });
 
   React.useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
 
   function rollDice() {
     if (!tenzies) {
+      setScore((prevState) => ({ ...prevState, rolls: ++prevState.rolls }));
       setDice((oldDice) => {
         return oldDice.map((dice) => {
           return !!dice.isHeld ? dice : generateNewDie();
@@ -53,14 +55,14 @@ function App() {
       setTenzies(false);
       setDice(allNewDice());
       setScore((prevScore) => {
-        return { ...prevScore, current: 0 };
+        return { ...prevScore, current: 0, rolls: 0 };
       });
     }
   }
 
   function holdDice(d) {
     const anyHeld = dice.find((d) => d.isHeld);
-    
+
     if (anyHeld && anyHeld.value !== d.value) {
       console.log(anyHeld);
       console.log(d.value);

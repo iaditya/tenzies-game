@@ -38,6 +38,9 @@ export default function TimeCounter({ gameStarted, score, setScore }) {
       <div className="score">
         Best &#8594; <span>{score.best}</span>
       </div>
+      <div className="score">
+        Total Roll &#8594; <span>{score.rolls}</span>
+      </div>
 
       {score.current ? (
         <div className="score">
