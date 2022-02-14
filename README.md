@@ -11,4 +11,5 @@ In the project directory, you can run:
 2. Track number of rolls
 3. Track the time
 4. Save best time in local Storage
+5. Should not select incorrect digit
 
