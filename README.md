@@ -9,7 +9,7 @@ In the project directory, you can run:
 ### `TODO`
 1. Put css dots for dice.
 2. Track number of rolls
-3. Track the time
-4. Save best time in local Storage
-5. Should not select incorrect digit
+3. Track the time [done]
+4. Save best time in local Storage [done]
+5. Should not select invalid digit [done]
 
