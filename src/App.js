@@ -58,16 +58,24 @@ function App() {
     }
   }
 
-  function holdDice(dId) {
+  function holdDice(d) {
+    const anyHeld = dice.find((d) => d.isHeld);
+    
+    if (anyHeld && anyHeld.value !== d.value) {
+      console.log(anyHeld);
+      console.log(d.value);
+      alert("Make sure you choose the same number dice.");
+      return;
+    }
     setDice((oldDice) =>
       oldDice.map((dice) =>
-        dice.id === dId ? { ...dice, isHeld: true } : dice
+        dice.id === d.id ? { ...dice, isHeld: true } : dice
       )
     );
   }
 
   const diceElements = dice.map((d, i) => {
-    return <Dice key={i} dice={d} holdDice={() => holdDice(d.id)} />;
+    return <Dice key={i} dice={d} holdDice={() => holdDice(d)} />;
   });
 
   return (
