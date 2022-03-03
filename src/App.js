@@ -25,7 +25,7 @@ function App() {
       setTenzies(true);
       setGameStarted(false);
     }
-  }, [dice]);
+  }, [dice, gameStarted]);
 
   function generateNewDie() {
     return {

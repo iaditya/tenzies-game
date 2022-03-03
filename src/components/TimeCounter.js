@@ -1,37 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function TimeCounter({ gameStarted, score, setScore }) {
   const [sec, setTime] = React.useState(0);
-  let [timerId, setTimerId] = React.useState(null);
+  let timerId = useRef(null);
 
   useEffect(() => {
     console.log("useEffect", gameStarted);
     if (gameStarted) {
+      if (timerId.current) return;
       console.log("started");
-      startCounter();
+      let timer = setInterval(() => {
+        setTime((prevTime) => ++prevTime);
+      }, 1000);
+      timerId.current = timer;
     } else {
-      stopCounter();
+      // stopCounter();
+      if (timerId.current === null || sec === 0) return;
+      console.log("timerId ", timerId.current);
+      console.log("currennt sec ", sec);
+      setScore((prevScore) => {
+        let best = sec < prevScore.best ? sec : prevScore.best;
+        localStorage.setItem("HIGH_SCORE", JSON.stringify(best));
+        return { ...prevScore, current: sec, best: best };
+      });
+      setTime(0);
+      clearInterval(timerId.current);
     }
-  }, [gameStarted]);
-
-  function startCounter() {
-    let timer = setInterval(() => {
-      setTime((prevTime) => ++prevTime);
-    }, 1000);
-    setTimerId(timer);
-  }
-
-  function stopCounter() {
-    if (!timerId) return;
-    console.log("timerId ", timerId);
-    setScore((prevScore) => {
-      let best = sec < prevScore.best ? sec : prevScore.best;
-      localStorage.setItem("HIGH_SCORE", JSON.stringify(best));
-      return { ...prevScore, current: sec, best: best };
-    });
-    setTime(0);
-    clearInterval(timerId);
-  }
+  }, [gameStarted, setScore, sec]);
 
   return (
     <div className="score-card">
